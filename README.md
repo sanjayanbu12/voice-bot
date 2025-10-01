@@ -1,4 +1,6 @@
 Sanjay's AI Voice Bot
+
+
 An intelligent, voice-powered chatbot that represents Sanjay Anbazhagan, a Full-stack & Generative AI Engineer. The bot can answer questions about Sanjay's professional life and also handle general knowledge queries, switching its persona dynamically.
 
 ✨ Features
