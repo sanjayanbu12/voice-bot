@@ -74,7 +74,7 @@ RESPONSE GUIDELINES:
 """.format(profile=SANJAY_PROFILE)
 
 # Initialize the generative model
-model = genai.GenerativeModel('gemini-2.0-flash')
+model = genai.GenerativeModel('gemini-1.5-flash')
 
 async def get_gemini_response(user_query: str) -> str:
     """
