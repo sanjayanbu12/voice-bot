@@ -8,8 +8,10 @@ from .database import conversation_collection
 # Initialize the FastAPI app
 app = FastAPI()
 
-# This is the crucial CORS fix for both local and deployed versions
-origins = ["*"]
+origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
 
 app.add_middleware(
     CORSMiddleware,
@@ -18,6 +20,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # Pydantic model for the request body
 class ChatRequest(BaseModel):
