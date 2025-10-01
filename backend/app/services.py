@@ -15,7 +15,7 @@ Background:
 - Bachelor of Engineering in Electronics and Communication Engineering (CGPA 8.6)
 - Graduated from SNS College of Engineering, Coimbatore (Aug 2019 - May 2023)
 - Started career as Software Associate at SNS Square Consultancy Services (Mar 2023 - Dec 2023)
-- Currently Software Engineer at SNS Square Consultancy Services (Jan 2024 - July 2025)
+- Worked as Software Engineer at SNS Square Consultancy Services (Jan 2024 - July 2025)
 
 Technical Skills:
 - Frontend: React.js, Next.js, Tailwind CSS, Redux Toolkit
