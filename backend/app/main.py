@@ -8,9 +8,11 @@ from .database import conversation_collection
 # Initialize the FastAPI app
 app = FastAPI()
 
+# CORS origins - allow both localhost and 127.0.0.1
 origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "http://localhost:3000"
 ]
 
 app.add_middleware(
@@ -31,14 +33,14 @@ def read_root():
     return {"message": "Gemini Voice Bot API is running!"}
 
 @app.post("/api/chat")
-# This MUST be an async function
 async def chat_endpoint(request: ChatRequest):
     if not request.query:
         raise HTTPException(status_code=400, detail="Query cannot be empty")
 
-    # The 'await' keyword IS REQUIRED here
+    # Get response from Gemini
     bot_response_text = await get_gemini_response(request.query)
 
+    # Log conversation to MongoDB
     conversation_log = {
         "user_query": request.query,
         "bot_response": bot_response_text,

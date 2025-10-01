@@ -21,7 +21,7 @@ __pycache__/
 
 # Environment variables
 # IMPORTANT: Never commit your secret keys
-.env
+# .env
 
 # Build artifacts
 build/
@@ -40,8 +40,8 @@ node_modules/
 frontend/dist/
 
 # Local environment variables
-.env.local
-.env.*.local
+# .env.local
+# .env.*.local
 
 # Debug logs
 npm-debug.log*
