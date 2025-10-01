@@ -37,7 +37,7 @@ async def chat_endpoint(request: ChatRequest):
         raise HTTPException(status_code=400, detail="Query cannot be empty")
 
     # The 'await' keyword is required here because get_gemini_response is async
-    bot_response_text = await get_gemini_response(request.query)
+    bot_response_text = get_gemini_response(request.query)
 
     # Create a conversation log document
     conversation_log = {

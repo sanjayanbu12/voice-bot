@@ -76,7 +76,7 @@ RESPONSE GUIDELINES:
 # Initialize the generative model
 model = genai.GenerativeModel('gemini-2.0-flash')
 
-async def get_gemini_response(user_query: str) -> str:
+def get_gemini_response(user_query: str) -> str:
     """
     Gets a response from the Gemini API based on the user query and persona.
     Intelligently determines if the question is personal (about Sanjay) or general.
@@ -95,7 +95,7 @@ Instructions:
 
 Your Answer:"""
         
-        response = await model.generate_content_async(prompt)
+        response = model.generate_content(prompt)
         return response.text
     except Exception as e:
         print(f"Error getting response from Gemini: {e}")
