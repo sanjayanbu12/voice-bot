@@ -8,8 +8,7 @@ from .database import conversation_collection
 # Initialize the FastAPI app
 app = FastAPI()
 
-# Configure CORS (Cross-Origin Resource Sharing)
-# This is the corrected list. It allows all connections.
+# This is the crucial CORS fix for both local and deployed versions
 origins = ["*"]
 
 app.add_middleware(
@@ -29,24 +28,19 @@ def read_root():
     return {"message": "Gemini Voice Bot API is running!"}
 
 @app.post("/api/chat")
+# This MUST be an async function
 async def chat_endpoint(request: ChatRequest):
-    """
-    Receives user query, gets a response from Gemini, and logs it to MongoDB.
-    """
     if not request.query:
         raise HTTPException(status_code=400, detail="Query cannot be empty")
 
-    # The 'await' keyword is required here because get_gemini_response is async
-    bot_response_text = get_gemini_response(request.query)
+    # The 'await' keyword IS REQUIRED here
+    bot_response_text = await get_gemini_response(request.query)
 
-    # Create a conversation log document
     conversation_log = {
         "user_query": request.query,
         "bot_response": bot_response_text,
         "timestamp": datetime.utcnow()
     }
-
-    # Asynchronously insert the log into MongoDB
     await conversation_collection.insert_one(conversation_log)
 
     return {"response": bot_response_text}
