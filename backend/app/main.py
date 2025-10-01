@@ -9,12 +9,8 @@ from .database import conversation_collection
 app = FastAPI()
 
 # Configure CORS (Cross-Origin Resource Sharing)
-# This allows the React frontend to communicate with this backend.
-origins = [
-    "http://localhost:5173", # Default Vite dev server port
-    "http://localhost:3000", # Default Create React App port
-    # Add your deployed frontend URL here when you deploy
-]
+# This is the corrected list. It allows all connections.
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -40,8 +36,8 @@ async def chat_endpoint(request: ChatRequest):
     if not request.query:
         raise HTTPException(status_code=400, detail="Query cannot be empty")
 
-    # Get response from our Gemini service
-    bot_response_text = get_gemini_response(request.query)
+    # The 'await' keyword is required here because get_gemini_response is async
+    bot_response_text = await get_gemini_response(request.query)
 
     # Create a conversation log document
     conversation_log = {
