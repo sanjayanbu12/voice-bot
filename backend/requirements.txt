@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+google-generativeai
+motor
+pydantic[email]
+fastapi-cors
+pydantic-settings
