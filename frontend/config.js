@@ -1,6 +1,6 @@
-const VITE_API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_URL = import.meta.env.VITE_API_BASE_URL;
 
-fetch(`${VITE_API_BASE_URL}/api/some-endpoint`, {
+fetch(`${API_URL}/api/some-endpoint`, {
   method: "GET",
 })
   .then(res => res.json())
